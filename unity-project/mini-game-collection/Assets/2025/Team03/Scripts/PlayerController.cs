@@ -27,6 +27,62 @@ namespace MiniGameCollection.Games2026.Team03
             float movementY = axisY * Time.deltaTime * PlayerSpeed;
             Vector3 newPosition = transform.position + new Vector3(movementX, movementY, 0);
             Rigidbody2D.MovePosition(newPosition);
+
+            //check input of players
+            if (ArcadeInput.Players[(int)PlayerID].Action1.Pressed)
+            {
+                Interact();
+            }
+        }
+
+
+        void Interact()
+        {
+            if (PlayerID == PlayerID.Player1)
+            {
+            
+
+            }
+            if (PlayerID == PlayerID.Player2)
+            {
+
+            }
+        }
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (PlayerID == PlayerID.Player1)
+            {
+                if (other.CompareName("2026-team03-player1-object"))
+                {
+                    Player1Hovering = true;
+                }
+
+            }
+            if (PlayerID == PlayerID.Player2)
+            {
+                if (other.CompareName("2026-team03-player2-object"))
+                {
+                    Player2Hovering = true;
+                }
+            }
+        }
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (PlayerID == PlayerID.Player1)
+            {
+                if (other.CompareName("2026-team03-player1-object"))
+                {
+                    Player1Hovering = false;
+                }
+
+            }
+            if (PlayerID == PlayerID.Player2)
+            {
+                if (other.CompareName("2026-team03-player2-object"))
+                {
+                    Player2Hovering = false;
+                }
+            }
         }
     }
 }
